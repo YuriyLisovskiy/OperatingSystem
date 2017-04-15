@@ -1,0 +1,45 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# bin folder
+bin/
+
+# vim swap files
+*.swp
+
+#folder to save data in
+data/
+
+#Visual studio unneeded stuff
+.suo
+Debug/
+*vcx*
+*sln
+*VC*
