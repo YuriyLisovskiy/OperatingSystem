@@ -1,11 +1,15 @@
-#define LINES 25
-#define COLUMNS_IN_LINE 80
-#define BYTES_FOR_EACH_ELEMENT 2
-#define SCREENSIZE BYTES_FOR_EACH_ELEMENT * COLUMNS_IN_LINE * LINES
+//LINES = 25
+//COLUMNS_IN_LINE = 80
+//BYTES_FOR_EACH_ELEMENT = 2
+//SCREENSIZE = BYTES_FOR_EACH_ELEMENT * COLUMNS_IN_LINE * LINES
+
+#include "./utils/Header.h"
 
 char *vidPtr = (char*)0xb8000;
 unsigned int currentPosStr = 0;
 
+// info:
+// Prints string on the screen.
 void print(const char* str)
 {
 	unsigned int i = 0;
@@ -20,6 +24,9 @@ void print(const char* str)
 	}
 	return;
 }
+
+// info:
+// Clear screen.
 void clear(void)
 {
 	unsigned int i = 0;
@@ -33,10 +40,25 @@ void clear(void)
 		// Attribute-byte - light grey on black screen.
 		vidPtr[i++] = 0x07;
 	}
+	// Position of printing strings starts from the beginning.
+	currentPosStr = 0;
 	return;
 }
-void printNewLine(void)
+
+// info:
+// Moves cursor to the next line.
+void jumpNewLine(void)
 {
 	unsigned int lineSize = BYTES_FOR_EACH_ELEMENT * COLUMNS_IN_LINE;
 	currentPosStr = currentPosStr + (lineSize - currentPosStr % (lineSize));
+	return;
+}
+
+// info:
+// Prints string and moves cursor to the next line.
+void  printLine(const char* str)
+{
+	print(str);
+	jumpNewLine();
+	return;
 }
