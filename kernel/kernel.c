@@ -1,10 +1,11 @@
-#include "../Functions.h"
+#include "../drivers/keyboard.h"
 
 void kmain(void)
 {
 	clear();
-	print("Operating system [Version 1.0]");
-	printNewLine();
-	print("(c) 2017 Yuriy Lisovskiy.");
-     	return;
+	printLine("Operating system [Version 1.0]");
+	printLine("(c) 2017 Yuriy Lisovskiy.");
+	jumpNewLine();
+
+	input();
 }
