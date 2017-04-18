@@ -62,7 +62,14 @@ struct IDTEntry
 	unsigned short int offsetHigherbits;
 };
 struct IDTEntry IDT[IDT_SIZE];
-void input(void)
+void kbInit()
+{
+	// 0xFD is 11111101 - enables only IRQ1 (keyboard)
+	writePort(0x21, 0xFD);
+	while(1);
+	return;
+}
+void input()
 {
 	unsigned long keyboardAddress;
 	unsigned long idtAddress;
@@ -108,15 +115,7 @@ void input(void)
 	kbInit();
 	return;
 }
-
-void kbInit(void)
-{
-	/* 0xFD is 11111101 - enables only IRQ1 (keyboard)*/
-	writePort(0x21 , 0xFD);
-	while(1);
-	return;
-}
-void keyboardHandlerMain(void)
+void keyboardHandlerMain()
 {
 	unsigned char status;
 	char keycode;

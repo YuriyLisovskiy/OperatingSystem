@@ -6,6 +6,6 @@ all:
 	gcc -m32 -c drivers/keyboard.h -o drivers/keyboard.o
 	ld -m elf_i386 -T kernel/link.ld -o bin/kernel.bin kernel/kasm.o kernel/kc.o
 	qemu-system-i386 -kernel bin/kernel.bin
-	$(RM)
+	$(RM) kernel/*.o kernel/*~ utils/*.o ustils/*~ drivers/*.o drivers/*~ *.o *~
 clean:
-	$(RM)bin/kernel kernel/*.o kernel/*~ utils/*.o utils/*~ drivers/*.o drivers/*~ *.o *~
+	$(RM) kernel/*.o kernel/*~ utils/*.o utils/*~ drivers/*.o drivers/*~ *.o *~
