@@ -12,3 +12,6 @@
 
 #define ENTER_KEY_CODE 0x1C
 #define BACKSPACE_KEY_CODE 0x0e
+
+#define GLOBAL_IO_STRING char* string[]
+#include <stdbool.h>

@@ -64,9 +64,11 @@ struct IDTEntry
 struct IDTEntry IDT[IDT_SIZE];
 void kbInit()
 {
-	// 0xFD is 11111101 - enables only IRQ1 (keyboard)
-	writePort(0x21, 0xFD);
-	while(1);
+	while(true)
+	{
+		// 0xFD is 11111101 - enables only IRQ1 (keyboard)
+		writePort(0x21, 0xFD);
+	}
 	return;
 }
 void input()
@@ -89,7 +91,6 @@ void input()
 	/* ICW1 - begin initialization */
 	writePort(0x20 , 0x11);
 	writePort(0xA0 , 0x11);
-
 	/* ICW2 - remap offset address of IDT */
 	/*
 	* In x86 protected mode, we have to remap the PICs beyond 0x20 because
@@ -123,26 +124,26 @@ void keyboardHandlerMain()
 	writePort(0x20, 0x20);
 	status = readPort(KEYBOARD_STATUS_PORT);
 	/* Lowest bit of status will be set if buffer is not empty */
-	if (status & 0x01) {
+	if (status & 0x01)
+	{
+		vidPtr[currentPosStr] = '_';
 		keycode = readPort(KEYBOARD_DATA_PORT);
 		if(keycode < 0)
 		{
 			return;
 		}
-		else if(keycode == BACKSPACE_KEY_CODE && currentPosStr == 0)
-		{
-			vidPtr[currentPosStr] = ' ';
-		}
 		else if(keycode == ENTER_KEY_CODE)
 		{
+			vidPtr[currentPosStr] = ' ';
 			jumpNewLine();
 		}
 		else if(keycode == BACKSPACE_KEY_CODE)
 		{
-			if((currentPosStr % COLUMNS_IN_LINE != 0))
+			if(currentPosStr % COLUMNS_IN_LINE != 0)
 			{
 				vidPtr[currentPosStr--] = keyboardMap[(unsigned char) keycode];
-				vidPtr[currentPosStr--] = 0x02;
+				vidPtr[currentPosStr--] = 0x07;
+				vidPtr[currentPosStr] = ' ';
 			}
 			else
 			{

@@ -8,4 +8,7 @@ void kmain(void)
 	jumpNewLine();
 
 	input();
+	printLine("Helloooooooooo!!!!!");
+	jumpNewLine();
+	input();
 }
