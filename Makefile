@@ -1,5 +1,10 @@
 all: build clean run
 
+requirements:
+	sudo apt-get install gcc
+	sudo apt-get install nasm
+	sudo apt-get install qemu-system
+
 build:
 	mkdir -p bin
 	nasm -f elf32 kernel/kernel.asm -o bin/kasm.o
@@ -8,5 +13,6 @@ build:
 
 clean:
 	rm -r bin/*.o
+
 run:
 	qemu-system-i386 -kernel bin/kernel
