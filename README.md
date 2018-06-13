@@ -6,7 +6,7 @@ Download zip archive or clone a repository:
 $ https://github.com/YuriyLisovskiy/simple-os.git
 ```
 ### Build and Run
-Requirements (Ubuntu):
+Requirements (Ubuntu 16.04 LTS):
 * `gcc` and `nasm` compilers to build the kernel
 * `qemu` emulator to run the kernel
 
