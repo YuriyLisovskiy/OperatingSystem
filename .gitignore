@@ -37,9 +37,13 @@ bin/
 #folder to save data in
 data/
 
-#Visual studio unneeded stuff
+# Visual studio unneeded stuff
 .suo
 Debug/
 *vcx*
 *sln
 *VC*
+
+# CLion stuff
+cmake-build-debug/
+.idea/
