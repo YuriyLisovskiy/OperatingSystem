@@ -12,7 +12,7 @@ Requirements (Ubuntu 16.04 LTS):
 
 Install requirement software:
 ```
-$ sudo make requirements
+$ sudo make install-requirements
 ```
 Build the kernel:
 ```
