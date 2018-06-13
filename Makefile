@@ -1,6 +1,6 @@
 all: build clean run
 
-requirements:
+install-requirements:
 	sudo apt-get install gcc
 	sudo apt-get install nasm
 	sudo apt-get install qemu-system
