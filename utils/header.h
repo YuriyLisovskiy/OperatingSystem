@@ -1,3 +1,6 @@
+#ifndef SIMPLE_OS_HEADER_H
+#define SIMPLE_OS_HEADER_H
+
 #pragma once
 #define LINES 25
 #define COLUMNS_IN_LINE 80
@@ -15,3 +18,5 @@
 
 #define GLOBAL_IO_STRING char* string[]
 #include <stdbool.h>
+
+#endif

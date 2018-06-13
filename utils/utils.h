@@ -1,22 +1,19 @@
-//LINES = 25
-//COLUMNS_IN_LINE = 80
-//BYTES_FOR_EACH_ELEMENT = 2
-//SCREENSIZE = BYTES_FOR_EACH_ELEMENT * COLUMNS_IN_LINE * LINES
+#ifndef SIMPLE_OS_UTILS_H
+#define SIMPLE_OS_UTILS_H
 
-#include "./utils/Header.h"
+#include "../utils/header.h"
 
-char *vidPtr = (char*)0xb8000;
+char *vidPtr = (char *) 0xb8000;
 unsigned int currentPosStr = 0;
 
 // info:
 // Prints string on the screen.
-void print(const char* str)
+void print(const char *str)
 {
 	unsigned int i = 0;
-	
+
 	// This loop writes the string to video memory.
-	while(str[i] != '\0')
-	{
+	while (str[i] != '\0') {
 		// The character's ascii.
 		vidPtr[currentPosStr++] = str[i++];
 		// Attribute-byte: give character black background and light grey fg.
@@ -30,11 +27,10 @@ void print(const char* str)
 void clear(void)
 {
 	unsigned int i = 0;
-	
+
 	// This loop clears the screen.
 	// There are 25 lines each of 80 columns; each element takes 2 bytes.
-	while(i < SCREENSIZE)
-	{
+	while (i < SCREENSIZE) {
 		// Blank character.
 		vidPtr[i++] = ' ';
 		// Attribute-byte - light grey on black screen.
@@ -56,9 +52,11 @@ void jumpNewLine(void)
 
 // info:
 // Prints string and moves cursor to the next line.
-void  printLine(const char* str)
+void printLine(const char *str)
 {
 	print(str);
 	jumpNewLine();
 	return;
 }
+
+#endif
