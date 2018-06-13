@@ -1,4 +1,4 @@
-## Simple OS
+## OS
 Fun with kernel programming. This is a horrible project written in c language while I have no idea how to write programs =D
 ### Download
 Download zip archive or clone a repository:
